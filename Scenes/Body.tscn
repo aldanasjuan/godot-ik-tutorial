@@ -1,0 +1,321 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/SSS.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/bone.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/target.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/foot.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Body.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "stance"
+tracks/0/type = "value"
+tracks/0/path = NodePath("targets/right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 118, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("targets/left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -118, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hip:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -310 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hip/left_leg:c_rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("hip/right_leg:c_rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("targets/left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -118, 0 ), Vector2( 0, -90 ), Vector2( 118, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("targets/right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 118, 0 ), Vector2( -118, 0 ), Vector2( -5.657, -90 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hip/left_leg:c_rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0, -15.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hip/right_leg:c_rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 30.0, -15.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("hip:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -310 ), Vector2( 0, -325 ), Vector2( 0, -310 ), Vector2( 0, -325 ) ]
+}
+
+[node name="body" type="Node2D"]
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="hip" type="Node2D" parent="."]
+position = Vector2( -16.8714, -234.378 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="left_leg" type="Node2D" parent="hip"]
+modulate = Color( 0.773438, 0.773438, 0.773438, 1 )
+script = ExtResource( 1 )
+direction = -1
+follow = true
+offset = Vector2( 0, -24 )
+root = NodePath("../..")
+bone_a = NodePath("upper")
+end_bone_a = NodePath("upper/end")
+bone_b = NodePath("lower")
+end_bone_b = NodePath("lower/end")
+bone_c = NodePath("foot")
+end_bone_c = NodePath("foot/end")
+target = NodePath("../../targets/left")
+target_color = Color( 0, 0.929412, 0, 1 )
+lerp_rate = 0.1
+lerp_range = 100.0
+constrain_c_angle = true
+
+[node name="upper" type="Node2D" parent="hip/left_leg"]
+modulate = Color( 0.262745, 0.27451, 0.717647, 1 )
+show_behind_parent = true
+rotation = 0.823393
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="end" type="Node2D" parent="hip/left_leg/upper"]
+position = Vector2( 188.933, 0 )
+
+[node name="sprite" type="Sprite" parent="hip/left_leg/upper"]
+position = Vector2( 95.6624, 4.87411 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="lower" type="Node2D" parent="hip/left_leg"]
+modulate = Color( 0.262745, 0.27451, 0.717647, 1 )
+show_behind_parent = true
+position = Vector2( 128.425, 138.574 )
+rotation = 2.77467
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="end" type="Node2D" parent="hip/left_leg/lower"]
+position = Vector2( 188.933, 2.017 )
+
+[node name="sprite" type="Sprite" parent="hip/left_leg/lower"]
+position = Vector2( 93.234, 6.3 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="foot" type="Node2D" parent="hip/left_leg"]
+modulate = Color( 0.67451, 0.309804, 0.309804, 1 )
+show_behind_parent = true
+position = Vector2( -48.6555, 204.471 )
+rotation = 5.60519e-45
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="end" type="Node2D" parent="hip/left_leg/foot"]
+position = Vector2( 0, 23.993 )
+
+[node name="sprite" type="Sprite" parent="hip/left_leg/foot"]
+position = Vector2( 92.2551, 4.61627 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="right_leg" type="Node2D" parent="hip"]
+script = ExtResource( 1 )
+direction = -1
+follow = true
+root = NodePath("../..")
+bone_a = NodePath("upper")
+end_bone_a = NodePath("upper/end")
+bone_b = NodePath("lower")
+end_bone_b = NodePath("lower/end")
+bone_c = NodePath("foot")
+end_bone_c = NodePath("foot/end")
+target = NodePath("../../targets/right")
+lerp_rate = 0.1
+lerp_range = 100.0
+c_rotation_degrees = 17.65
+c_rotation_offset = -10.4
+
+[node name="upper" type="Node2D" parent="hip/right_leg"]
+modulate = Color( 0.262745, 0.27451, 0.717647, 1 )
+rotation = -38.231
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="end" type="Node2D" parent="hip/right_leg/upper"]
+position = Vector2( 188.933, 0 )
+
+[node name="sprite" type="Sprite" parent="hip/right_leg/upper"]
+position = Vector2( 95.6624, 4.87411 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="lower" type="Node2D" parent="hip/right_leg"]
+modulate = Color( 0.262745, 0.27451, 0.717647, 1 )
+position = Vector2( 162.835, -95.8138 )
+rotation = 7.20935
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="end" type="Node2D" parent="hip/right_leg/lower"]
+position = Vector2( 100, 2.017 )
+
+[node name="sprite" type="Sprite" parent="hip/right_leg/lower"]
+position = Vector2( 93.234, 6.3 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="foot" type="Node2D" parent="hip/right_leg"]
+modulate = Color( 0.67451, 0.309804, 0.309804, 1 )
+position = Vector2( 221.314, -14.6697 )
+rotation = 6.40972
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="end" type="Node2D" parent="hip/right_leg/foot"]
+position = Vector2( 0, 23.993 )
+
+[node name="sprite" type="Sprite" parent="hip/right_leg/foot"]
+position = Vector2( 92.2551, 4.61627 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="targets" type="Node2D" parent="."]
+
+[node name="left" type="Node2D" parent="targets"]
+position = Vector2( -65.527, -5.907 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="Sprite" parent="targets/left"]
+modulate = Color( 0.490196, 0.960784, 0.552941, 0.611765 )
+position = Vector2( -1.88773, 1.88773 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="right" type="Node2D" parent="targets"]
+position = Vector2( 204.442, -249.047 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="Sprite" parent="targets/right"]
+modulate = Color( 0.490196, 0.960784, 0.87451, 0.611765 )
+position = Vector2( -1.88773, 1.88773 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="ray" type="RayCast2D" parent="."]
+position = Vector2( 0, -310 )
+enabled = true
+cast_to = Vector2( 0, 500 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "walk"
+anims/stance = SubResource( 1 )
+anims/walk = SubResource( 2 )
+
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2( 1.5, 1.5 )
+__meta__ = {
+"_edit_lock_": true
+}

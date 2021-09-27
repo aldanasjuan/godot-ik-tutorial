@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Test.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Body.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 276.163, 55.7913 )
+
+[node name="Test" type="Node2D"]
+position = Vector2( 453.267, 291.991 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="rect" type="ColorRect" parent="."]
+margin_left = -1793.0
+margin_top = -815.0
+margin_right = 2107.0
+margin_bottom = 1703.0
+color = Color( 0.494118, 0.494118, 0.494118, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="platform" type="StaticBody2D" parent="."]
+position = Vector2( -55.3136, 556.212 )
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="rect" type="ColorRect" parent="platform"]
+margin_left = -278.685
+margin_top = -58.434
+margin_right = 276.315
+margin_bottom = 55.566
+color = Color( 0.227451, 0.12549, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="collision" type="CollisionShape2D" parent="platform"]
+visible = false
+position = Vector2( 0.00012207, -1.49829 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="body" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4.75684, 90.3798 )
